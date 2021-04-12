@@ -2,6 +2,7 @@
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
+#include "Shader.h"
 
 void error_callback( int error, const char* description )
 {
@@ -33,6 +34,7 @@ int main(void)
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
+    Shader* shader = CreateShader();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))    {
@@ -45,6 +47,8 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
+
+    DestroyShader(shader);
 
     glfwTerminate();
     return 0;
